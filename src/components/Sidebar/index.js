@@ -143,8 +143,8 @@ class Sidebar extends React.Component {
                                     </span>
                                 }
                             >
-                                <Menu.Item key="5">All</Menu.Item>
-                                <Menu.Item key="6">Add</Menu.Item>
+                                <Menu.Item key="5"><Link to='/dashboard/pharmacists'>All</Link></Menu.Item>
+                                <Menu.Item key="6"><Link to='/dashboard/pharmacist/add'>Add</Link></Menu.Item>
                             </SubMenu>
                             <SubMenu
                                 key="sub3"
@@ -156,7 +156,7 @@ class Sidebar extends React.Component {
                                 }
                             >
                                 <Menu.Item key="9"><Link to='/dashboard/doctors'>All</Link></Menu.Item>
-                                <Menu.Item key="10">Add</Menu.Item>
+                                <Menu.Item key="10"><Link to='/dashboard/doctor/add'>Add</Link></Menu.Item>
                             </SubMenu>
                             <Menu.Item key="11">
                                 <Icon type="appstore" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, Input } from 'antd';
+import { Icon, Input, Button } from 'antd';
 
 import Flex from 'components/Flex';
 import RegisterHeader from 'components/HeaderFieldSet';
@@ -26,11 +26,11 @@ const FormRow = styled(Flex)`
 `;
 
 
-class RegisterDrug extends React.Component {
+class RegisterPharmacist extends React.Component {
     render() {
         return(
             <Wrapper>
-                <RegisterHeader><P>Add Drug</P></RegisterHeader>
+                <RegisterHeader><P>Add Pharmacist</P></RegisterHeader>
                 <Form>
                     <FormRow justifyContent='space-between' alignItems="center">
                         <Input
@@ -68,10 +68,13 @@ class RegisterDrug extends React.Component {
                             placeholder="Phone"
                         />
                     </FormRow>
+                    <FormRow>
+                        <Button size="large" style={{ marginRight: '15px', marginLeft: '15px' }} block>SAVE</Button>
+                    </FormRow>
                 </Form>
             </Wrapper>
         );
     }
 }
 
-export default RegisterDrug;
+export default RegisterPharmacist;

@@ -15,7 +15,7 @@ function App() {
     <AppWrapper>
       <Switch>
         <Route exact path='/' render={
-          () => <Redirect to='/dashboard' />
+          () => <Redirect to='/admin/login' />
         } />
         <Route path='/admin/login' component={AdminLogin} />
         <Route path='/admin/signup' component={AdminSignup} />

@@ -7,11 +7,14 @@ import Header from 'components/Header';
 import Flex from 'components/Flex';
 import Message from 'components/Message';
 import RegisterDoctor from 'screens/RegisterDoctor';
-import RegisterDrug from 'screens/RegisterDrug';
+import RegisterDrug from 'screens/Drugs/Add';
 import DisplayDrugs from 'screens/Drugs/Display';
 import ExpiredDrugs from 'screens/Drugs/Expired';
 import SelledDrugs from 'screens/Drugs/Selled';
 import DisplayDoctors from 'screens/Doctor/Display';
+import AddDoctor from 'screens/Doctor/Add';
+import DisplayPharmacists from 'screens/Pharmacist/Display';
+import AddPharmacist from 'screens/Pharmacist/Add';
 import Categories from 'screens/Categories';
 import Feedbacks from 'screens/Feedbacks';
 import AddFeedback from 'screens/AddFeedback';
@@ -91,6 +94,9 @@ class AdminDashboard extends React.Component {
                                 <Route path='/dashboard/drug/add' component={RegisterDrug} />
                                 <Route path='/dashboard/doctors' component={DisplayDoctors} />
                                 <Route path='/dashboard/categories' component={Categories} />
+                                <Route path='/dashboard/doctor/add' component={AddDoctor} />
+                                <Route path='/dashboard/pharmacists' component={DisplayPharmacists} />
+                                <Route path='/dashboard/pharmacist/add' component={AddPharmacist} />
                             </Switch>
                         </MainWrapper>
                         <NotificationWrapper>

@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Input, Button } from 'antd';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import Flex from 'components/Flex';
+import { IP_ADDRESS } from 'utils/config';
 
 const Wrapper = styled(Flex)`
     height: 100vh;
@@ -77,6 +79,33 @@ const H3 = styled.h3`
 `;
 
 class AdminLogin extends React.Component {
+    state = {
+        email: '',
+        password: ''
+    }
+
+    handleInputchange = (key, value) => {
+        this.setState({
+            [key]: value
+        })
+    }
+
+    login = () => {
+        const { email, password } = this.state;
+
+        console.log(`http://${IP_ADDRESS}/admin/login`);
+
+        axios.request({
+            method: 'post',
+            url: `http://${IP_ADDRESS}/admin/login`,
+            data : { email, password }
+        }).then(response => {
+            console.log('Response: ', response);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     render() {
         return(
             <Wrapper justifyContent="center" alignItems="center">
@@ -86,10 +115,10 @@ class AdminLogin extends React.Component {
                     </Header>
                     <Content>
                         <Heading>
-                            <MyInput placeholder="User name" />
-                            <MyInput placeholder="Password" />
+                            <MyInput onChange={(e) => this.handleInputchange('email', e.target.value)} placeholder="User name" />
+                            <MyInput onChange={(e) => this.handleInputchange('password', e.target.value)} placeholder="Password" />
                             <P>Forgot username/password? </P>
-                            <Link to='/'><MyButton><span style={{ color: 'white' }}>SIGN IN</span></MyButton></Link>
+                            <Link to='/dashboard'><MyButton><span style={{ color: 'white' }}>SIGN IN</span></MyButton></Link>
                         </Heading>
                         <Footer alignItems="center" flexDirection="column">
                             <StyledP>

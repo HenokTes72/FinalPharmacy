@@ -18,12 +18,12 @@ const Wrapper = styled.div`
 `;
 
 const P = styled.p`
-    font-size: 17px;
+    font-size: 14px;
     margin-bottom: 0px;
 `;
 
 const Item = styled.div`
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 `;
 
 class AddFeedback extends React.Component {

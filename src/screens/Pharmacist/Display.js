@@ -70,23 +70,14 @@ const data = [
     sex: 'F',
     edit: <Button type='primary'>Edit</Button>,
     delete: <Button type='danger'>Delete</Button>
-  },
-  {
-    key: '3',
-    firstname: 'John',
-    lastname: 'Brown',
-    age: '40',
-    sex: 'M',
-    edit: <Button type='primary'>Edit</Button>,
-    delete: <Button type='danger'>Delete</Button>
-  },
+  }
 ];
 
-class DisplayDoctors extends React.Component {
+class DisplayPharmacist extends React.Component {
     render() {
         return(
             <Wrapper>
-                <FieldSet><P>All Doctors</P></FieldSet>
+                <FieldSet><P>All Pharmacists</P></FieldSet>
                 <Content>
                     <Search size="large" placeholder="input search text" onSearch={value => console.log(value)} enterButton />
                     <TableWrapper>
@@ -103,4 +94,4 @@ class DisplayDoctors extends React.Component {
     }
 }
 
-export default DisplayDoctors;
+export default DisplayPharmacist;
