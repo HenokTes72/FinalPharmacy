@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+
+import AdminLogin from 'screens/AdminLogin';
+import AdminSignup from 'screens/AdminSignup';
+import AdminDashboard from 'screens/AdminDashboard';
+
+const AppWrapper = styled.div`
+  background-color: white;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Switch>
+        <Route exact path='/' render={
+          () => <Redirect to='/dashboard' />
+        } />
+        <Route path='/admin/login' component={AdminLogin} />
+        <Route path='/admin/signup' component={AdminSignup} />
+        <Route path='/dashboard' component={AdminDashboard} />
+      </Switch>
+    </AppWrapper>
   );
 }
 
