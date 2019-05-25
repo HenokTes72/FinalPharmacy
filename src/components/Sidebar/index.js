@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar, Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+import { Avatar } from 'antd';
+import AdminSidebar from 'components/Sidebar/Admin';
+import DoctorSidebar from 'components/Sidebar/Doctor';
+import PharmaSidebar from 'components/Sidebar/Pharmacist';
 import moment from 'moment';
 
 import Flex from 'components/Flex';
 import CurrentTime from 'components/Time';
-
-const SubMenu = Menu.SubMenu;
 
 
 const Wrapper = styled.div`
@@ -86,13 +86,14 @@ class Sidebar extends React.Component {
     };
 
     render() {
-        const { showSidebar } = this.props;
+        const { openKeys } = this.state;
+        const { showSidebar, type } = this.props;
         return (
             showSidebar ? 
             (
                 <Wrapper>
                     <Header alignItems="center" justifyContent="center">
-                        <StyledH2>Pharmacy</StyledH2>
+                        <StyledH2>{type === 'admin' ? 'Admin' : 'Doctor' }</StyledH2>
                     </Header>
                     <SubHeader>
                         <Logo alignItems="center">
@@ -114,78 +115,23 @@ class Sidebar extends React.Component {
                         </SearchWrapper> */}
                     </SubHeader>
                     <Footer>
-                        <Menu
-                            theme="dark"
-                            mode="inline"
-                            openKeys={this.state.openKeys}
-                            onOpenChange={this.onOpenChange}
-                        >
-                            <SubMenu
-                                key="sub1"
-                                title={
-                                    <span>
-                                        <Icon type="medicine-box" />
-                                        <span>Drugs</span>
-                                    </span>
+                        {
+                            ((type) => {
+                                switch(type) {
+                                    case 'admin': return <AdminSidebar 
+                                        openKeys={openKeys} 
+                                        onOpenChange={this.onOpenChange} />;
+                                    case 'doctor': return <DoctorSidebar
+                                        openKeys={openKeys} 
+                                        onOpenChange={this.onOpenChange} />;
+                                    case 'pharma': return <PharmaSidebar
+                                        openKeys={openKeys} 
+                                        onOpenChange={this.onOpenChange} />;
+                                    default : return <div></div>
                                 }
-                            >
-                                <Menu.Item key="1"><Link to='/dashboard/drugs'>All</Link></Menu.Item>
-                                <Menu.Item key="2"><Link to='/dashboard/drug/add'>Add</Link></Menu.Item>
-                                <Menu.Item key="3"><Link to='/dashboard/drugs/expired'>Expired</Link></Menu.Item>
-                                <Menu.Item key="4"><Link to='/dashboard/drugs/selled'>Selled</Link></Menu.Item>
-                            </SubMenu>
-                            <SubMenu
-                                key="sub2"
-                                title={
-                                    <span>
-                                    <Icon type="woman" />
-                                    <span>Pharmacist</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="5"><Link to='/dashboard/pharmacists'>All</Link></Menu.Item>
-                                <Menu.Item key="6"><Link to='/dashboard/pharmacist/add'>Add</Link></Menu.Item>
-                            </SubMenu>
-                            <SubMenu
-                                key="sub3"
-                                title={
-                                    <span>
-                                        <Icon type="user" />
-                                        <span>Doctor</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="9"><Link to='/dashboard/doctors'>All</Link></Menu.Item>
-                                <Menu.Item key="10"><Link to='/dashboard/doctor/add'>Add</Link></Menu.Item>
-                            </SubMenu>
-                            <Menu.Item key="11">
-                                <Icon type="appstore" />
-                                <span><Link style={{ color: '#f2f4f4', opacity: '0.7' }} to='/dashboard/categories'>Categories</Link></span>
-                            </Menu.Item>
-                            <SubMenu
-                                key="sub4"
-                                title={
-                                    <span>
-                                        <Icon type="info-circle" />
-                                        <span>Rules & Regulations</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="12">Add</Menu.Item>
-                            </SubMenu>
-                            <SubMenu
-                                key="sub5"
-                                title={
-                                    <span>
-                                        <Icon type="message" />
-                                        <span>Feedacks</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="13"><Link to='/dashboard/feedbacks'>All</Link></Menu.Item>
-                                <Menu.Item key="14"><Link to='/dashboard/feedback/add'>Add</Link></Menu.Item>
-                            </SubMenu>
-                        </Menu>
+                            })(type)
+                        }
+                        
                     </Footer>
                 </Wrapper>
             )

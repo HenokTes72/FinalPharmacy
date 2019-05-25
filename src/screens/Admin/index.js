@@ -6,18 +6,17 @@ import Sidebar from 'components/Sidebar/index';
 import Header from 'components/Header';
 import Flex from 'components/Flex';
 import Message from 'components/Message';
-import RegisterDoctor from 'screens/RegisterDoctor';
-import RegisterDrug from 'screens/Drugs/Add';
-import DisplayDrugs from 'screens/Drugs/Display';
-import ExpiredDrugs from 'screens/Drugs/Expired';
-import SelledDrugs from 'screens/Drugs/Selled';
-import DisplayDoctors from 'screens/Doctor/Display';
-import AddDoctor from 'screens/Doctor/Add';
-import DisplayPharmacists from 'screens/Pharmacist/Display';
-import AddPharmacist from 'screens/Pharmacist/Add';
-import Categories from 'screens/Categories';
-import Feedbacks from 'screens/Feedbacks';
-import AddFeedback from 'screens/AddFeedback';
+import RegisterDoctor from 'screens/Admin/Doctor/Add';
+import RegisterDrug from 'screens/Admin/Drugs/Add';
+import DisplayDrugs from 'screens/Admin/Drugs/Display';
+import ExpiredDrugs from 'screens/Admin/Drugs/Expired';
+import SelledDrugs from 'screens/Admin/Drugs/Selled';
+import DisplayDoctors from 'screens/Admin/Doctor/Display';
+import AddDoctor from 'screens/Admin/Doctor/Add';
+import DisplayPharmacists from 'screens/Admin/Pharmacist/Display';
+import AddPharmacist from 'screens/Admin/Pharmacist/Add';
+import Categories from 'screens/Admin/Categories';
+import Feedbacks from 'screens/Admin/Feedbacks';
 import NotificationHeader from 'components/HeaderFieldSet';
 
 const Wrapper = styled(Flex)``;
@@ -78,25 +77,24 @@ class AdminDashboard extends React.Component {
         const { showSidebar } = this.state;
         return(
             <Wrapper>
-                <Sidebar showSidebar={showSidebar}/>
+                <Sidebar type="admin" showSidebar={showSidebar}/>
                 <RightWrapper left={showSidebar ? '200px' : '0px'} width={showSidebar && 200}>
-                    <Header toggleSidebar={this.toggleSidebar}/>
+                    <Header type="admin" toggleSidebar={this.toggleSidebar}/>
                     <Content>
                         <MainWrapper>
                             <Switch>
-                                <Route exact path='/dashboard' component={RegisterDrug} />
-                                <Route path='/dashboard/feedbacks' component={Feedbacks} />
-                                <Route path='/dashboard/feedback/add' component={AddFeedback} />
-                                <Route path='/dashboard/register/doctor' component={RegisterDoctor} />
-                                <Route exact path='/dashboard/drugs' component={DisplayDrugs} />
-                                <Route path='/dashboard/drugs/expired' component={ExpiredDrugs} />
-                                <Route path='/dashboard/drugs/selled' component={SelledDrugs} />
-                                <Route path='/dashboard/drug/add' component={RegisterDrug} />
-                                <Route path='/dashboard/doctors' component={DisplayDoctors} />
-                                <Route path='/dashboard/categories' component={Categories} />
-                                <Route path='/dashboard/doctor/add' component={AddDoctor} />
-                                <Route path='/dashboard/pharmacists' component={DisplayPharmacists} />
-                                <Route path='/dashboard/pharmacist/add' component={AddPharmacist} />
+                                <Route exact path='/admin' component={RegisterDrug} />
+                                <Route path='/admin/feedbacks' component={Feedbacks} />
+                                <Route path='/admin/register/doctor' component={RegisterDoctor} />
+                                <Route exact path='/admin/drugs' component={DisplayDrugs} />
+                                <Route path='/admin/drugs/expired' component={ExpiredDrugs} />
+                                <Route path='/admin/drugs/selled' component={SelledDrugs} />
+                                <Route path='/admin/drug/add' component={RegisterDrug} />
+                                <Route path='/admin/doctors' component={DisplayDoctors} />
+                                <Route path='/admin/categories' component={Categories} />
+                                <Route path='/admin/doctor/add' component={AddDoctor} />
+                                <Route path='/admin/pharmacists' component={DisplayPharmacists} />
+                                <Route path='/admin/pharmacist/add' component={AddPharmacist} />
                             </Switch>
                         </MainWrapper>
                         <NotificationWrapper>

@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 
 import HeaderFieldSet from 'components/HeaderFieldSet';
 
 const { TextArea } = Input;
 
 const Content = styled.div`
-    width: 500px
-    margin: 0 auto;
+    padding-right: 25px;
+    padding-left: 25px;
     padding-bottom: 15px;
     padding-top: 30px;
 `;
@@ -42,6 +42,9 @@ class AddFeedback extends React.Component {
                             placeholder="Description"
                             autosize={{ minRows: 4, maxRows: 6 }}
                         />
+                    </Item>
+                    <Item>
+                        <Button size="large"  block>ADD</Button>
                     </Item>
                 </Content>
             </Wrapper>

@@ -20,7 +20,7 @@ const NotificationWrapper = styled.div`
 const menu = (
     <Menu>
       <Menu.Item key="0">
-        <Link to='/admin/login'>Log out</Link>
+        <Link to='/login'>Log out</Link>
       </Menu.Item>
     </Menu>
   );

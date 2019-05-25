@@ -15,3 +15,8 @@ code {
 h2 {
   margin-bottom: 0px;
 }
+
+
+.ant-select-selection--single {
+  height: 36px;
+}

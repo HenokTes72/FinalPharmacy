@@ -25,45 +25,44 @@ const FormRow = styled(Flex)`
     margin-bottom: 25px;
 `;
 
+const MyInput = styled(Input)`
+    margin-right: 15px;
+    margin-left: 15px;
+`;   
 
-class RegisterPharmacist extends React.Component {
+
+class RegisterDoctor extends React.Component {
     render() {
         return(
             <Wrapper>
-                <RegisterHeader><P>Add Pharmacist</P></RegisterHeader>
+                <RegisterHeader><P>Add Doctor</P></RegisterHeader>
                 <Form>
                     <FormRow justifyContent='space-between' alignItems="center">
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Username"
                         />
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Phone"
                         />
                     </FormRow>
                     <FormRow justifyContent='space-between' alignItems="center">
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Main"
                         />
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="euro" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Euro"
                         />
                     </FormRow>
                     <FormRow justifyContent='space-between' alignItems="center">
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Username"
                         />
-                        <Input
-                            style={{ marginRight: '15px', marginLeft: '15px' }}
+                        <MyInput
                             prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             placeholder="Phone"
                         />
@@ -77,4 +76,4 @@ class RegisterPharmacist extends React.Component {
     }
 }
 
-export default RegisterPharmacist;
+export default RegisterDoctor;

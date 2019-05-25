@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Icon, Input, Button } from 'antd';
@@ -26,11 +27,11 @@ const FormRow = styled(Flex)`
 `;
 
 
-class RegisterDoctor extends React.Component {
+class RegisterPharmacist extends React.Component {
     render() {
         return(
             <Wrapper>
-                <RegisterHeader><P>Add Doctor</P></RegisterHeader>
+                <RegisterHeader><P>Add Pharmacist</P></RegisterHeader>
                 <Form>
                     <FormRow justifyContent='space-between' alignItems="center">
                         <Input
@@ -77,4 +78,4 @@ class RegisterDoctor extends React.Component {
     }
 }
 
-export default RegisterDoctor;
+export default RegisterPharmacist;

@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Button } from 'antd';
+import { Input, Button, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Flex from 'components/Flex';
 import { IP_ADDRESS } from 'utils/config';
+
+const Option = Select.Option;
+
+// axios.defaults.withCredentials = true;
 
 const Wrapper = styled(Flex)`
     height: 100vh;
@@ -19,7 +23,7 @@ const Modal = styled.div`
 
 const Header = styled(Flex)`
     height: 70px;
-    background-color: #3fbc20;
+    background-color: #223658;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     margin-bottom: 15px;
@@ -48,8 +52,8 @@ const MyInput = styled(Input)`
 const MyButton = styled(Button)`
     height: 35px;
     border-radius: 20px;
-    margin-bottom: 15px;
-    background-color: #3fbc20;
+    margin-bottom: 20px;
+    background-color: #223658;
     width: 100%;
 `;
 
@@ -59,29 +63,21 @@ const P = styled.p`
     text-align: right;
 `;
 
-const StyledP = styled.p`
-    font-size: 14px;
-    margin-bottom: 0px;
-`;
-
 const Heading = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 `;
 
-const Footer = styled(Flex)`
-    padding: 20px;
-`;
-
-const H3 = styled.h3`
-    margin-bottom: 0px;
-    color: #3fbc20;
-    font-size: 16px;
+const MySelect = styled(Select)`
+    margin-bottom: 20px;
+    width: 100%;
 `;
 
 class AdminLogin extends React.Component {
+
     state = {
         email: '',
-        password: ''
+        password: '',
+        role: 'admin'
     }
 
     handleInputchange = (key, value) => {
@@ -90,23 +86,27 @@ class AdminLogin extends React.Component {
         })
     }
 
+    handleSelectChange = value => {
+        this.handleInputchange('role', value);
+    }
+
     login = () => {
-        const { email, password } = this.state;
+        const { email, password, role } = this.state;
 
-        console.log(`http://${IP_ADDRESS}/admin/login`);
+        console.log(`http://${IP_ADDRESS}/${role}/login`);
 
-        axios.request({
-            method: 'post',
-            url: `http://${IP_ADDRESS}/admin/login`,
-            data : { email, password }
-        }).then(response => {
-            console.log('Response: ', response);
+        axios.post(
+            `http://${IP_ADDRESS}/${role}/login`,
+            { email, password }
+        ).then(response => {
+            console.log(response);
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
+        const { role } = this.state;
         return(
             <Wrapper justifyContent="center" alignItems="center">
                 <Modal>
@@ -115,17 +115,20 @@ class AdminLogin extends React.Component {
                     </Header>
                     <Content>
                         <Heading>
+                            <MySelect
+                                onChange={this.handleSelectChange}
+                                showSearch
+                                placeholder="Select a role"
+                            >
+                                <Option value="admin">Admin</Option>
+                                <Option value="doctor">Doctor</Option>
+                                <Option value="pharma">Pharmacist</Option>
+                            </MySelect>
                             <MyInput onChange={(e) => this.handleInputchange('email', e.target.value)} placeholder="User name" />
                             <MyInput onChange={(e) => this.handleInputchange('password', e.target.value)} placeholder="Password" />
                             <P>Forgot username/password? </P>
-                            <Link to='/dashboard'><MyButton><span style={{ color: 'white' }}>SIGN IN</span></MyButton></Link>
+                            <Link to={`/${role}`}><MyButton onClick={this.login} ><span style={{ color: 'white' }}>SIGN IN</span></MyButton></Link>
                         </Heading>
-                        <Footer alignItems="center" flexDirection="column">
-                            <StyledP>
-                                Dont't have an account?
-                            </StyledP>
-                            <Link to='/admin/signup'><H3>SIGN UP</H3></Link>
-                        </Footer>   
                     </Content>
                 </Modal>
             </Wrapper>
